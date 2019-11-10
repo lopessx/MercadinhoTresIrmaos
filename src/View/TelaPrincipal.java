@@ -6,9 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Control.CarrinhoControl;
-import Control.Factory.ManipuladorConfig;
-import Model.Produto;
+
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -69,7 +67,7 @@ public class TelaPrincipal extends JFrame {
 
 	
 	public TelaPrincipal() throws IOException {
-		Properties prop = ManipuladorConfig.getProp(); // abrindo arquivo de configs
+		//Properties prop = ManipuladorConfig.getProp(); // abrindo arquivo de configs
 		DecimalFormat df = new DecimalFormat("0.##");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(220, 10, 910, 706);
@@ -231,13 +229,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(panel_7);
 		
 		Button button = new Button("Concluir");
-		button.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				String nomeFunc= prop.getProperty("prop.nomeAtendente");
-				ConcluirCompra.run(CarrinhoControl.calcularTotal(),nomeFunc);
-			}
-		});
+		
 		button.setForeground(UIManager.getColor("Button.light"));
 		button.setBackground(new Color(0, 153, 102));
 		button.setFont(new Font("Times New Roman", Font.BOLD, 15));
@@ -281,7 +273,7 @@ public class TelaPrincipal extends JFrame {
 		panel_10.setBounds(0, 633, 894, 60);
 		contentPane.add(panel_10);
 		
-		JLabel lblCaixaAberto = new JLabel(prop.getProperty("prop.mensagemRodape"));
+		JLabel lblCaixaAberto = new JLabel();
 		panel_10.add(lblCaixaAberto);
 		lblCaixaAberto.setForeground(new Color(255, 255, 255));
 		lblCaixaAberto.setFont(new Font("Times New Roman", Font.BOLD, 21));
@@ -299,25 +291,7 @@ public class TelaPrincipal extends JFrame {
 		campoCodigo = new JTextField();
 		campoCodigo.setFont(new Font("Tahoma", Font.BOLD, 16));
 		campoCodigo.setHorizontalAlignment(SwingConstants.CENTER);
-		campoCodigo.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				int tecla = arg0.getKeyCode();
-		        if (tecla == KeyEvent.VK_ENTER) {
-		        	Produto produtoBuscado= CarrinhoControl.buscarProduto(Long.parseLong(campoCodigo.getText()), 
-		        		Integer.parseInt(campoQtdCod.getText()));
-		        	// Atualizando GUI
-		        	campoCodigo.setText("");
-		        	campoQtdCod.setText("1");
-		        	campoDescricao.setText(produtoBuscado.getNomeProduto());
-		        	campoQuantidade.setText("" + produtoBuscado.getQtdComprada());
-		        	campoValorQuantidade.setText("R$"+ df.format(produtoBuscado.getValorUnid()));
-		        	campoSubTotal.setText("R$"+ df.format(produtoBuscado.getValorUnid() * produtoBuscado.getQtdComprada()));
-		        	campoTotal.setText("R$"+ df.format(CarrinhoControl.calcularTotal()));
-		        	itensComprados.setText(CarrinhoControl.listarComprados());
-		        }
-			}
-		});
+		
 		
 		campoQtdCod = new JTextField();
 		campoQtdCod.setHorizontalAlignment(SwingConstants.CENTER);
@@ -336,7 +310,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(panel_12);
 		
 		
-		String nomeMercado=prop.getProperty("prop.nomeMercado");
+		String nomeMercado="Mercadinho Três Irmãos";
 		JLabel lblMercadoHumilde = new JLabel(nomeMercado);
 		lblMercadoHumilde.setFont(new Font("Gabriola", Font.BOLD, 33));
 		lblMercadoHumilde.setBounds(373, 175, 285, 55);
@@ -363,42 +337,24 @@ public class TelaPrincipal extends JFrame {
 		label_2.setBounds(175, 226, 35, 34);
 		contentPane.add(label_2);
 		
-		JButton button_2 = new JButton("");
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				itensComprados.setText(CarrinhoControl.listarComprados());
-	        	campoTotal.setText("R$"+ CarrinhoControl.calcularTotal());
-			}
-		});
+		JButton button_2 = new JButton(""); //Listar Comprados e calcular o total
+		
 		button_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
 		button_2.setBounds(808, 282, 35, 34);
 		contentPane.add(button_2);
 		
-		JLabel lblCaixa = new JLabel("Caixa: "+prop.getProperty("prop.numeroCaixa"));
+		JLabel lblCaixa = new JLabel();
 		lblCaixa.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblCaixa.setBounds(375, 282, 121, 23);
 		contentPane.add(lblCaixa);
 		
-		JLabel lblAtendente = new JLabel("Atendente: "+prop.getProperty("prop.nomeAtendente"));
+		JLabel lblAtendente = new JLabel();
 		lblAtendente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblAtendente.setBounds(372, 233, 215, 27);
 		contentPane.add(lblAtendente);
 		
-		JButton button_3 = new JButton("");
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				campoCodigo.setText("");
-	        	campoQtdCod.setText("1");
-	        	campoDescricao.setText("");
-	        	campoQuantidade.setText("");
-	        	campoValorQuantidade.setText("");
-	        	campoSubTotal.setText("");
-	        	campoTotal.setText("");
-	        	itensComprados.setText("");
-	        	CarrinhoControl.esvaziarCarrinho();
-				
-			}
-		});
+		JButton button_3 = new JButton(""); //Botão de Esvaziar o carrinho
+		
 		button_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
 		button_3.setBounds(23, 282, 35, 34);
 		contentPane.add(button_3);

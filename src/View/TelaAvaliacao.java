@@ -8,11 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Control.AvaliacaoControl;
-import Control.Factory.ManipuladorConfig;
-import Model.Avaliacao;
-import Model.DAO.AvaliacaoDAO;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -47,7 +42,7 @@ public class TelaAvaliacao extends JFrame {
 	 * @throws IOException 
 	 */
 	public TelaAvaliacao() throws IOException {
-		Properties prop = ManipuladorConfig.getProp();
+		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(500, 150, 341, 255);
 		contentPane = new JPanel();
@@ -69,18 +64,7 @@ public class TelaAvaliacao extends JFrame {
 		contentPane.add(lblNota);
 		
 		JButton btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Avaliacao aval = new Avaliacao(Integer.parseInt(""+comboBox.getSelectedItem()), campoCPF.getText(),prop.getProperty("prop.nomeAtendente"));
-				if(AvaliacaoControl.gerarAvaliacao(aval)) {
-					JOptionPane.showMessageDialog(frame, "Obrigado!"); 
-					frame.dispose();
-				}else {
-					JOptionPane.showMessageDialog(frame, "Cliente não cadastrado!");
-				}
-			}
-			
-		});
+		
 		btnConfirmar.setForeground(new Color(0, 128, 0));
 		btnConfirmar.setBounds(226, 133, 89, 38);
 		contentPane.add(btnConfirmar);

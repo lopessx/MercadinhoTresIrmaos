@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Control.CarrinhoControl;
+
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -67,19 +67,7 @@ public class ConcluirCompra extends JFrame {
 		contentPane.add(lblAtendente);
 		
 		Button button = new Button("Concluir");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(CarrinhoControl.concluirCompra(atendente,""+comboBox.getSelectedItem())) {
-					
-					JOptionPane.showMessageDialog(frame,"Compra concluida com exito.");
-					TelaAvaliacao.run();
-					frame.dispose();
-					CarrinhoControl.esvaziarCarrinho();
-				}else {
-					JOptionPane.showMessageDialog(frame,"Houve algum erro!!");
-				}
-			}
-		});
+		
 		button.setForeground(UIManager.getColor("Button.background"));
 		button.setFont(new Font("Dialog", Font.BOLD, 14));
 		button.setBackground(new Color(51, 204, 102));

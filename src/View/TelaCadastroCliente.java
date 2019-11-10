@@ -7,9 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Control.ClienteControl;
-import Model.Cliente;
-import Model.DAO.ClienteDAO;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -78,17 +75,7 @@ public class TelaCadastroCliente extends JFrame {
 		contentPane.add(campoNome);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Cliente cli = new Cliente(campoNome.getText(), campoCpf.getText());
-				if(ClienteControl.cadastroCliente(cli)) {
-					JOptionPane.showMessageDialog(frame, "Cadastrado com sucesso");
-					frame.dispose();
-				}else {
-					JOptionPane.showConfirmDialog(frame, "Cliente já cadastrado");
-				}
-			}
-		});
+		
 		btnCadastrar.setForeground(new Color(0, 128, 0));
 		btnCadastrar.setBackground(new Color(60, 179, 113));
 		btnCadastrar.setBounds(224, 215, 89, 23);

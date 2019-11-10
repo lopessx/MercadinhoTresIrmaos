@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Control.CarrinhoControl;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -73,16 +71,7 @@ public class CancelarItem extends JFrame {
 		campoQuantidade.setColumns(10);
 		
 		JButton btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(CarrinhoControl.cancelarItem(Long.parseLong(campoCodigo.getText()), Integer.parseInt(campoQuantidade.getText()))) {
-					JOptionPane.showMessageDialog(frame,"CANCELADO!");
-					frame.dispose();
-				}else {
-					JOptionPane.showMessageDialog(frame,"Houve algum erro!!");
-				}
-			}
-		});
+		
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnConfirmar.setBackground(new Color(102, 204, 102));
 		btnConfirmar.setBounds(207, 164, 89, 23);

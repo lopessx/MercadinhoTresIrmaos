@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Control.EstoqueControl;
+
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -95,22 +95,7 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(lblCadastroDeProdutos);
 		
 		Button button = new Button("Cadastrar");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(EstoqueControl.cadastroProdutos(Long.parseLong(campoCodigoProd.getText()),
-					Integer.parseInt(campoQtdEstoque.getText()), campoNomeProd.getText(), 
-					Double.parseDouble(campoPrecoUnit.getText()))) {
-					
-					JOptionPane.showMessageDialog(frame,"Produto Cadastrado!");
-					campoCodigoProd.setText("");
-					campoNomeProd.setText("");
-					campoPrecoUnit.setText("");
-					campoQtdEstoque.setText("");
-				}else {
-					JOptionPane.showMessageDialog(frame,"Erro no cadastro!");
-				}
-			}
-		});
+		
 		button.setForeground(new Color(255, 255, 255));
 		button.setBackground(new Color(102, 204, 102));
 		button.setFont(new Font("Dialog", Font.BOLD, 15));
