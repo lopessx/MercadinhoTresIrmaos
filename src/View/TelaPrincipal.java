@@ -84,13 +84,13 @@ public class TelaPrincipal extends JFrame {
 		JMenu mnCadastrarProdutos = new JMenu("Op\u00E7\u00F5es");
 		barraMenu.add(mnCadastrarProdutos);
 		
-		JMenuItem mntmCadastrarProdutos = new JMenuItem("Cadastrar Produtos");
-		mntmCadastrarProdutos.addActionListener(new ActionListener() {
+		JMenuItem mntmAcessarEstoque = new JMenuItem("Acessar Estoque");
+		mntmAcessarEstoque.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaCadastroProduto.run();
 			}
 		});
-		mnCadastrarProdutos.add(mntmCadastrarProdutos);
+		mnCadastrarProdutos.add(mntmAcessarEstoque);
 		
 		JMenu mnAjuda = new JMenu("Ajuda");
 		barraMenu.add(mnAjuda);
@@ -112,13 +112,13 @@ public class TelaPrincipal extends JFrame {
 		JTextArea itensComprados = new JTextArea();
 		itensComprados.setText("");
 		itensComprados.setEditable(false);
-		itensComprados.setBounds(24, 316, 802, 309);
+		itensComprados.setBounds(24, 356, 802, 269);
 		contentPane.add(itensComprados);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setMaximum(20);
 		scrollBar.setBlockIncrement(50);
-		scrollBar.setBounds(826, 316, 17, 309);
+		scrollBar.setBounds(826, 356, 17, 269);
 		contentPane.add(scrollBar);
 		
 		JPanel panel_17 = new JPanel();
@@ -138,7 +138,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_13 = new JPanel();
 		panel_13.setBackground(Color.WHITE);
-		panel_13.setBounds(24, 135, 121, 27);
+		panel_13.setBounds(34, 193, 121, 27);
 		contentPane.add(panel_13);
 		
 		JLabel campoQuantidade = new JLabel("");
@@ -147,7 +147,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 51, 102));
-		panel.setBounds(23, 108, 121, 27);
+		panel.setBounds(33, 166, 121, 27);
 		contentPane.add(panel);
 		
 		JLabel lblQ = new JLabel("QUANTIDADE: ");
@@ -157,7 +157,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(51, 102, 204));
-		panel_1.setBounds(20, 104, 128, 60);
+		panel_1.setBounds(30, 162, 128, 60);
 		contentPane.add(panel_1);
 		
 		JPanel panel_2 = new JPanel();
@@ -172,11 +172,11 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblX = new JLabel("X");
 		lblX.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblX.setBounds(158, 123, 67, 41);
+		lblX.setBounds(168, 181, 67, 41);
 		contentPane.add(lblX);
 		
 		JPanel panel_14 = new JPanel();
-		panel_14.setBounds(190, 134, 133, 27);
+		panel_14.setBounds(200, 192, 133, 27);
 		contentPane.add(panel_14);
 		panel_14.setBackground(Color.WHITE);
 		
@@ -186,7 +186,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBackground(new Color(0, 51, 102));
-		panel_5.setBounds(190, 108, 133, 27);
+		panel_5.setBounds(200, 166, 133, 27);
 		contentPane.add(panel_5);
 		
 		JLabel lblValorUnitrio = new JLabel("VALOR UNIDADE");
@@ -196,17 +196,17 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(51, 102, 204));
-		panel_4.setBounds(187, 104, 141, 60);
+		panel_4.setBounds(197, 162, 141, 60);
 		contentPane.add(panel_4);
 		
 		JLabel label = new JLabel("=");
 		label.setFont(new Font("Tahoma", Font.BOLD, 22));
-		label.setBounds(338, 123, 67, 41);
+		label.setBounds(348, 181, 67, 41);
 		contentPane.add(label);
 		
 		JPanel panel_15 = new JPanel();
 		panel_15.setBackground(Color.WHITE);
-		panel_15.setBounds(363, 135, 133, 27);
+		panel_15.setBounds(373, 193, 133, 27);
 		contentPane.add(panel_15);
 		
 		JLabel campoSubTotal = new JLabel("");
@@ -215,7 +215,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(new Color(0, 51, 102));
-		panel_6.setBounds(363, 108, 133, 27);
+		panel_6.setBounds(373, 166, 133, 27);
 		contentPane.add(panel_6);
 		
 		JLabel lblSubTotal = new JLabel("SUB TOTAL");
@@ -225,7 +225,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_7 = new JPanel();
 		panel_7.setBackground(new Color(51, 102, 204));
-		panel_7.setBounds(360, 104, 141, 60);
+		panel_7.setBounds(370, 162, 141, 60);
 		contentPane.add(panel_7);
 		
 		Button button = new Button("Concluir");
@@ -255,7 +255,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(new Color(51, 102, 204));
-		panel_9.setBounds(635, 108, 208, 166);
+		panel_9.setBounds(635, 108, 208, 161);
 		contentPane.add(panel_9);
 		
 		JPanel panel_8 = new JPanel();
@@ -280,7 +280,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(new Color(0, 51, 102));
-		panel_11.setBounds(23, 218, 151, 27);
+		panel_11.setBounds(72, 262, 151, 27);
 		contentPane.add(panel_11);
 		
 		JLabel lblCdigoDeBarras = new JLabel("C\u00D3DIGO DE BARRAS");
@@ -298,27 +298,27 @@ public class TelaPrincipal extends JFrame {
 		campoQtdCod.setText("1");
 		campoQtdCod.setFont(new Font("Tahoma", Font.BOLD, 16));
 		campoQtdCod.setColumns(10);
-		campoQtdCod.setBounds(215, 245, 121, 27);
+		campoQtdCod.setBounds(264, 289, 121, 27);
 		contentPane.add(campoQtdCod);
 		campoCodigo.setColumns(10);
-		campoCodigo.setBounds(23, 244, 151, 27);
+		campoCodigo.setBounds(72, 288, 151, 27);
 		contentPane.add(campoCodigo);
 		
 		JPanel panel_12 = new JPanel();
 		panel_12.setBackground(new Color(51, 102, 204));
-		panel_12.setBounds(20, 214, 158, 60);
+		panel_12.setBounds(69, 258, 158, 60);
 		contentPane.add(panel_12);
 		
 		
 		String nomeMercado="Mercadinho Três Irmãos";
-		JLabel lblMercadoHumilde = new JLabel(nomeMercado);
-		lblMercadoHumilde.setFont(new Font("Gabriola", Font.BOLD, 33));
-		lblMercadoHumilde.setBounds(321, 172, 285, 55);
+		JLabel lblMercadoHumilde = new JLabel("Mercadinho Tr\u00EAs Irm\u00E3os III");
+		lblMercadoHumilde.setFont(new Font("Courier New", Font.BOLD, 33));
+		lblMercadoHumilde.setBounds(30, 92, 554, 57);
 		contentPane.add(lblMercadoHumilde);
 		
 		JPanel panel_18 = new JPanel();
 		panel_18.setBackground(new Color(0, 51, 102));
-		panel_18.setBounds(215, 218, 121, 27);
+		panel_18.setBounds(264, 262, 121, 27);
 		contentPane.add(panel_18);
 		
 		JLabel lblUnidades = new JLabel("UNIDADES");
@@ -328,19 +328,19 @@ public class TelaPrincipal extends JFrame {
 		
 		JPanel panel_20 = new JPanel();
 		panel_20.setBackground(new Color(51, 102, 204));
-		panel_20.setBounds(212, 214, 128, 60);
+		panel_20.setBounds(261, 258, 128, 60);
 		contentPane.add(panel_20);
 		
 		JLabel label_2 = new JLabel("->");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("Palatino Linotype", Font.BOLD, 26));
-		label_2.setBounds(175, 226, 35, 34);
+		label_2.setBounds(224, 270, 35, 34);
 		contentPane.add(label_2);
 		
 		JButton button_2 = new JButton(""); //Listar Comprados e calcular o total
 		
 		button_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
-		button_2.setBounds(808, 282, 35, 34);
+		button_2.setBounds(808, 322, 35, 34);
 		contentPane.add(button_2);
 		
 		JLabel lblCaixa = new JLabel();
@@ -356,7 +356,7 @@ public class TelaPrincipal extends JFrame {
 		JButton button_3 = new JButton(""); //Botão de Esvaziar o carrinho
 		
 		button_3.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/com/sun/javafx/scene/control/skin/caspian/dialog-error.png")));
-		button_3.setBounds(23, 282, 35, 34);
+		button_3.setBounds(24, 322, 35, 34);
 		contentPane.add(button_3);
 		
 		button_1.addActionListener(new ActionListener() {
