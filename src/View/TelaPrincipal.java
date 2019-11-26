@@ -112,7 +112,7 @@ public class TelaPrincipal extends JFrame {
 		JTextArea itensComprados = new JTextArea();
 		itensComprados.setText("");
 		itensComprados.setEditable(false);
-		itensComprados.setBounds(23, 316, 803, 309);
+		itensComprados.setBounds(24, 316, 802, 309);
 		contentPane.add(itensComprados);
 		
 		JScrollBar scrollBar = new JScrollBar();
@@ -313,7 +313,7 @@ public class TelaPrincipal extends JFrame {
 		String nomeMercado="Mercadinho Três Irmãos";
 		JLabel lblMercadoHumilde = new JLabel(nomeMercado);
 		lblMercadoHumilde.setFont(new Font("Gabriola", Font.BOLD, 33));
-		lblMercadoHumilde.setBounds(373, 175, 285, 55);
+		lblMercadoHumilde.setBounds(321, 172, 285, 55);
 		contentPane.add(lblMercadoHumilde);
 		
 		JPanel panel_18 = new JPanel();
