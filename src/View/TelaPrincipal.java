@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
+import Models.Produto;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -27,6 +27,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -34,9 +35,11 @@ import javax.swing.JButton;
 
 public class TelaPrincipal extends JFrame {
 
+	
 	private JPanel contentPane;
 	private JTextField campoCodigo;
 	private JTextField campoQtdCod;
+	
 
 	
 	public static void main(String[] args) {
@@ -68,6 +71,7 @@ public class TelaPrincipal extends JFrame {
 	
 	public TelaPrincipal() throws IOException {
 		//Properties prop = ManipuladorConfig.getProp(); // abrindo arquivo de configs
+		
 		DecimalFormat df = new DecimalFormat("0.##");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(220, 10, 910, 706);
@@ -76,6 +80,8 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
 		
 		JMenuBar barraMenu = new JMenuBar();
 		barraMenu.setBounds(0, 0, 894, 27);

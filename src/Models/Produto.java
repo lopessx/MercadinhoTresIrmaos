@@ -1,21 +1,44 @@
 package Models;
 
+import java.util.ArrayList;
+
 public class Produto {
 
-	private int id;
-	private String descricao;
+	private int cod_barras;
+	private String nome, descricao;
 	private float preco_unitario;
 	private int quantidade;
 	
+	ArrayList<Produto> Estoque;
+	
 	public Produto() {
-		// TODO Auto-generated constructor stub
+		Estoque = new ArrayList();
 	}
 	
-	public int getId() {
-		return id;
+	
+	
+	public Produto(int cod_barras, String nome, String descricao, float preco_unitario, int quantidade) {
+		super();
+		this.cod_barras = cod_barras;
+		this.descricao = descricao;
+		this.preco_unitario = preco_unitario;
+		this.quantidade = quantidade;
+		this.nome = nome;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public int getCod_barras() {
+		return cod_barras;
+	}
+	public void setCod_barras(int id) {
+		this.cod_barras = id;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -34,6 +57,18 @@ public class Produto {
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	public void addProdEstoque (Produto p){
+		
+		Estoque.add(p);
+	}
+
+
+
+	
+	public Object getNome1() {
+		return nome;
 	}
 	
 	
