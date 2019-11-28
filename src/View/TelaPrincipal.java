@@ -39,37 +39,29 @@ public class TelaPrincipal extends JFrame {
 	private JPanel contentPane;
 	private JTextField campoCodigo;
 	private JTextField campoQtdCod;
+	private static int aux = 0;
+	
 	
 
 	
 	public static void main(String[] args) {
-		try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            System.err.println(ex);
-        }
 		
-		
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaPrincipal frame = new TelaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+				
+}
 	
-	public TelaPrincipal() throws IOException {
+
+	private static void run() {
+		try {
+			TelaPrincipal frame = new TelaPrincipal();
+			frame.setVisible(true);
+			aux = aux + 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	private TelaPrincipal() throws IOException {
 		//Properties prop = ManipuladorConfig.getProp(); // abrindo arquivo de configs
 		
 		DecimalFormat df = new DecimalFormat("0.##");
@@ -93,7 +85,7 @@ public class TelaPrincipal extends JFrame {
 		JMenuItem mntmAcessarEstoque = new JMenuItem("Acessar Estoque");
 		mntmAcessarEstoque.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroProduto.run();
+				TelaCadastroProduto.getInstance();
 			}
 		});
 		mnCadastrarProdutos.add(mntmAcessarEstoque);
@@ -104,7 +96,7 @@ public class TelaPrincipal extends JFrame {
 		JMenuItem mntmSobreOSistema = new JMenuItem("Sobre o Sistema");
 		mntmSobreOSistema.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SobreOSistema.run();
+				SobreOSistema.getInstance();
 			}
 		});
 		mnAjuda.add(mntmSobreOSistema);
@@ -370,5 +362,20 @@ public class TelaPrincipal extends JFrame {
 				CancelarItem.run();
 			}
 		});
+		
+	}	
+	
+public static TelaPrincipal getInstance(){
+		
+		if (aux == 0) {
+			
+		TelaPrincipal.run();
+			
+		}
+		else {
+			return null;	
+		}
+		return null;
 	}
+	
 }

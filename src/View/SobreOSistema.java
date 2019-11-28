@@ -17,15 +17,17 @@ import java.awt.event.ActionEvent;
 public class SobreOSistema extends JFrame {
 
 	private JPanel contentPane;
+	private static int temp;
 
 	/**
 	 * Launch the application.
 	 */
 	static SobreOSistema frame;
-	public static void run() {
+	private static void run() {
 		try {
 			frame = new SobreOSistema();
 			frame.setVisible(true);
+			temp = temp + 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,4 +65,19 @@ public class SobreOSistema extends JFrame {
 		lblSobreOSistema.setBounds(29, 11, 151, 29);
 		contentPane.add(lblSobreOSistema);
 	}
+	
+	public static SobreOSistema getInstance(){
+		
+		if (temp== 0) {
+			
+			SobreOSistema.run();
+			
+		}
+		else {
+			return null;	
+		}
+		return null;
+	}
+	
+	
 }

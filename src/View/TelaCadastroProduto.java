@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
@@ -39,8 +40,9 @@ public class TelaCadastroProduto extends JFrame {
 	private JTextField campoDescricao2;
 	private JTable tabelaProdutos;
 	DefaultTableModel modelo;
+	private static int count = 0;
 	
-	public void LoadTable() {
+	private void LoadTable() {
 		
 		for (int i=0; i<Estoque.size(); i++) {
 			modelo.addRow(new Object[] {Estoque.get(i).getCod_barras(), Estoque.get(i).getNome(),  
@@ -50,10 +52,11 @@ public class TelaCadastroProduto extends JFrame {
 	}
 
 	
-	public static void run() {
+	private static void run() {
 		try {
 			frame = new TelaCadastroProduto();
 			frame.setVisible(true);
+			count = count + 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,7 +65,7 @@ public class TelaCadastroProduto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroProduto() {
+	private TelaCadastroProduto() {
 		
 
 		Estoque = new ArrayList();
@@ -183,4 +186,18 @@ public class TelaCadastroProduto extends JFrame {
 		scrollPane.setViewportView(tabelaProdutos);
 		
 	}
+	
+	public static TelaCadastroProduto getInstance(){
+		
+		if (count == 0) {
+			
+		TelaCadastroProduto.run();
+			
+		}
+		else {
+			return null;	
+		}
+		return null;
+	}
+	
 }
