@@ -47,13 +47,20 @@ public class TelaCadastroProduto extends JFrame {
 		
 		for (int i=0; i<Estoque.size(); i++) {
 			
-			modelo.addRow(new Object[] {Estoque.get(i).getCod_barras(), Estoque.get(i).getNome(),  
-										Estoque.get(i).getPreco_unitario(), Estoque.get(i).getQuantidade()
-										
-			});
 			
+
+			modelo.setRowCount(i);
+				modelo.addRow(new Object[] {Estoque.get(i).getCod_barras(), Estoque.get(i).getNome(),  
+						Estoque.get(i).getPreco_unitario(), Estoque.get(i).getQuantidade()
+				
+			}
+				
+			
+			);
+
 		}
 	}
+	
 
 	
 	private static void run() {
@@ -133,9 +140,10 @@ public class TelaCadastroProduto extends JFrame {
 			int barcod =Integer.parseInt(campoCodigoProd.getText());
 			int qnt_estoque =Integer.parseInt(campoQtdEstoque.getText());
 			Produto p = new Produto(barcod,campoNomeProd.getText(), campoDescricao2.getText(), preco, qnt_estoque);
+			
 			Estoque.add(p);
 
- 
+
 
 			}
 		});
@@ -188,19 +196,20 @@ public class TelaCadastroProduto extends JFrame {
 			}
 		));
 		scrollPane.setViewportView(tabelaProdutos);
+		LoadTable();
 		
-		JButton btnAtualizar = new JButton("");
-		btnAtualizar.addActionListener(new ActionListener() {
-			
-			@Override
+		JButton btnReload = new JButton("");
+		btnReload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoadTable();
-				
+
+			
+			LoadTable();
+
 			}
 		});
-		btnAtualizar.setIcon(new ImageIcon(TelaCadastroProduto.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
-		btnAtualizar.setBounds(447, 406, 40, 23);
-		contentPane.add(btnAtualizar);
+		btnReload.setIcon(new ImageIcon(TelaCadastroProduto.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
+		btnReload.setBounds(449, 414, 38, 25);
+		contentPane.add(btnReload);
 		
 	}
 	

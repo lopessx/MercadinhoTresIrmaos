@@ -9,6 +9,7 @@ public class Produto {
 	private float preco_unitario;
 	private int quantidade;
 	
+	
 	ArrayList<Produto> Estoque;
 	
 	public Produto() {
