@@ -1,21 +1,11 @@
 package Models;
 
-import java.util.ArrayList;
-
 public class Produto {
 
 	private int cod_barras;
 	private String nome, descricao;
 	private float preco_unitario;
 	private int quantidade;
-	
-	
-	ArrayList<Produto> Estoque;
-	
-	public Produto() {
-		Estoque = new ArrayList();
-	}
-	
 	
 	
 	public Produto(int cod_barras, String nome, String descricao, float preco_unitario, int quantidade) {
@@ -26,7 +16,6 @@ public class Produto {
 		this.quantidade = quantidade;
 		this.nome = nome;
 	}
-
 
 	
 	public String getNome() {
@@ -59,17 +48,34 @@ public class Produto {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
-	
-	public void addProdEstoque (Produto p){
-		
-		Estoque.add(p);
-	}
-
-
 
 	
 	public Object getNome1() {
 		return nome;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cod_barras;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto outro = (Produto) obj;
+		if (cod_barras != outro.cod_barras)
+			return false;
+		return true;
 	}
 	
 	
