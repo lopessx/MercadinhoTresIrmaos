@@ -25,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ImageIcon;
 
 public class TelaCadastroProduto extends JFrame {
 
@@ -45,9 +46,12 @@ public class TelaCadastroProduto extends JFrame {
 	private void LoadTable() {
 		
 		for (int i=0; i<Estoque.size(); i++) {
+			
 			modelo.addRow(new Object[] {Estoque.get(i).getCod_barras(), Estoque.get(i).getNome(),  
 										Estoque.get(i).getPreco_unitario(), Estoque.get(i).getQuantidade()
+										
 			});
+			
 		}
 	}
 
@@ -67,7 +71,7 @@ public class TelaCadastroProduto extends JFrame {
 	 */
 	private TelaCadastroProduto() {
 		
-
+		
 		Estoque = new ArrayList();
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(450, 250, 513, 639);
@@ -130,8 +134,8 @@ public class TelaCadastroProduto extends JFrame {
 			int qnt_estoque =Integer.parseInt(campoQtdEstoque.getText());
 			Produto p = new Produto(barcod,campoNomeProd.getText(), campoDescricao2.getText(), preco, qnt_estoque);
 			Estoque.add(p);
-			LoadTable();
-			TelaCadastroProduto.run();	 
+
+ 
 
 			}
 		});
@@ -184,6 +188,19 @@ public class TelaCadastroProduto extends JFrame {
 			}
 		));
 		scrollPane.setViewportView(tabelaProdutos);
+		
+		JButton btnAtualizar = new JButton("");
+		btnAtualizar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LoadTable();
+				
+			}
+		});
+		btnAtualizar.setIcon(new ImageIcon(TelaCadastroProduto.class.getResource("/com/sun/javafx/scene/web/skin/Redo_16x16_JFX.png")));
+		btnAtualizar.setBounds(447, 406, 40, 23);
+		contentPane.add(btnAtualizar);
 		
 	}
 	

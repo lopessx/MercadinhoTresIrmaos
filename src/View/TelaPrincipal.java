@@ -39,6 +39,7 @@ public class TelaPrincipal extends JFrame {
 	private JPanel contentPane;
 	private JTextField campoCodigo;
 	private JTextField campoQtdCod;
+	private static TelaPrincipal frame;
 	private static int aux = 0;
 	
 	
@@ -46,13 +47,14 @@ public class TelaPrincipal extends JFrame {
 	
 	public static void main(String[] args) {
 		
-				
+				TelaPrincipal.run();
+		
 }
 	
 
 	private static void run() {
 		try {
-			TelaPrincipal frame = new TelaPrincipal();
+			frame = new TelaPrincipal();
 			frame.setVisible(true);
 			aux = aux + 1;
 		} catch (Exception e) {
