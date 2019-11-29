@@ -33,24 +33,30 @@ public class Estoque implements Subject   {
 		Produto aux = null;
 		
 		Iterator<Produto> iterator = new ArrayListInterator<Produto>(estoque);
+		
 		//Precisei colocar esse verificador se não ele não adiciona o primeiro produto
-		if(iterator.hasNext() == false) {
-			estoque.add(object);
-		}else {
 		while (iterator.hasNext()) {
 			aux = iterator.next();
 			
 			if (aux.equals(object)) {
+				if(aux.getCod_barras() == object.getCod_barras()) {
+					object.setQuantidade(aux.getQuantidade() + object.getQuantidade());
+					estoque.remove(object);
+				}
+				
 			
-					aux.setQuantidade(aux.getQuantidade() + object.getQuantidade());
-				
-				
-			} else {
-				estoque.add(object);
-			}
+			
+			} 
 		}
+		if(iterator.hasNext() == false) {
+			estoque.add(object);
+		}else {
+			estoque.add(object);
+		}
+
 		
-		}
+
+		
 
 	}
 	
@@ -61,18 +67,16 @@ public class Estoque implements Subject   {
 		
 		Iterator<Produto> iterator = new ArrayListInterator<Produto>(estoque);
 		
+		if(iterator.hasNext() == false) {
+			estoque.remove(object);
+		}
+		
 		while (iterator.hasNext()) {
 			aux = iterator.next();
 			
 			if (aux.equals(object)) {
-				if(aux.getQuantidade() == object.getQuantidade()) {
-					estoque.remove(object);
-				} else {
-					aux.setQuantidade(aux.getQuantidade() - object.getQuantidade());
-				}
-			} else {
-				throw new NoSuchElementException("Não há esse Produto no Estoque");
-			}
+				estoque.remove(object);
+			} 
 		}
 
 	}

@@ -18,11 +18,12 @@ public class MainView {
 		
 		estoque.registrarObserver(compra);
 		
-		//Produto p1 = new Produto(0,"fuba","flocao",1,10);
-		//Produto p2 = new Produto(1,"arroz","ruim",2,5);
+		Produto p1 = new Produto(0,"fuba","flocao",1,10);
+		Produto p2 = new Produto(1,"arroz","ruim",2,5);
 		
-		//estoque.addDoEstoque(p1);
-		//estoque.addDoEstoque(p2);
+		estoque.addDoEstoque(p1);
+		estoque.addDoEstoque(p1);
+		estoque.addDoEstoque(p2);
 
 		/*
 		 * To do
@@ -43,6 +44,8 @@ public class MainView {
 			aux = scn.nextInt();
 			
 			switch(aux) {
+			
+			
 			
 			case 1:
 				System.out.println("Digite o codigo de barras do produto");
@@ -80,9 +83,11 @@ public class MainView {
 				break;
 			
 			case 3:
-				System.out.println("Digite o codigo de barras do produto que deseja retirar do estoque");
+				System.out.println("digite o codigo de barras"); 
 				int codBarras = scn.nextInt();
-				estoque.removeDoEstoque(estoque.getEstoque().get(codBarras));
+				Produto pTemp = estoque.getEstoque().get(codBarras);
+				estoque.removeDoEstoque(pTemp);
+				System.out.println("Produto removido com sucesso " + estoque.getEstoque().size());
 				break;
 			
 			case 4:
