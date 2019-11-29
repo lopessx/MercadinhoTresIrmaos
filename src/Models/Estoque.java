@@ -12,7 +12,7 @@ import interfaces.Subject;
 public class Estoque implements Subject   {
 	
 	private static Estoque instancia = new Estoque();
-	private ArrayList<Produto> estoque = new ArrayList<Produto>();
+	private ArrayList<Produto> estoque = null;
 	private List<Observer> observers = new ArrayList<>();
 			
 	private Estoque() {

@@ -78,6 +78,11 @@ public class Produto {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return this.getCod_barras() + this.getNome() + this.getDescricao() + this.getPreco_unitario() + this.getQuantidade();
+	}
 	
 	
 }
