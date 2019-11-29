@@ -1,15 +1,19 @@
 package Models;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import interators.ArrayListInterator;
 import interfaces.Iterator;
+import interfaces.Observer;
+import interfaces.Subject;
 
-public class Estoque  {
+public class Estoque implements Subject   {
 	
 	private static Estoque instancia = new Estoque();
-	private ArrayList<Produto> estoque = null;
+	private ArrayList<Produto> estoque = new ArrayList<Produto>();
+	private List<Observer> observers = new ArrayList<>();
 			
 	private Estoque() {
 		this.estoque  = new ArrayList<Produto>();
@@ -22,6 +26,7 @@ public class Estoque  {
 	public ArrayList<Produto> getEstoque() {
 		return estoque;
 	}
+	
 	
 	public void addDoEstoque(Produto object) {
 		
@@ -39,6 +44,7 @@ public class Estoque  {
 			}
 		}
 	}
+	
 	
 	public void removeDoEstoque(Produto object) {
 		
@@ -62,6 +68,29 @@ public class Estoque  {
 		
 		
 	}
+
+	@Override
+	public void registrarObserver(Observer observer) {
+		observers.add(observer);
+		
+	}
+
+	@Override
+	public void removerObserver(Observer observer) {
+		observers.remove(observer);
+		
+	}
+
+	@Override
+	public void notificar() {
+		for (Observer observer : observers) {
+			observer.atualizar(this);
+		}
+	}
 	
+
+
+
+
 
 }
