@@ -48,7 +48,7 @@ public class Compra implements Observer {
 			Estoque estoque = (Estoque) subject;
 			while(estoque.getEstoque().size() >  aux) {
 				
-			if(estoque.getEstoque().get(aux).getQuantidade() <= 0){
+			if(estoque.getEstoque().get(aux).getQuantidade() == 0){
 				System.out.println("Estoque do produto " + estoque.getEstoque().get(aux).getNome() + " está em falta " + " codigo: " + estoque.getEstoque().get(aux).getCod_barras());
 			}else if(estoque.getEstoque().get(aux).getQuantidade() < 10) {
 				System.out.println("Estoque baixo do produto " + estoque.getEstoque().get(aux).getNome() + " codigo: " + estoque.getEstoque().get(aux).getCod_barras());

@@ -16,15 +16,19 @@ public class MainView {
 		Compra compra = new Compra();
 		int aux = 0;
 		
-		ArrayList<Produto> produto = estoque.getEstoque();
+		estoque.registrarObserver(compra);
+		
+		//Produto p1 = new Produto(0,"fuba","flocao",1,10);
+		//Produto p2 = new Produto(1,"arroz","ruim",2,5);
+		
+		//estoque.addDoEstoque(p1);
+		//estoque.addDoEstoque(p2);
 
 		/*
 		 * To do
 		 * 
-		 * compra funcionando normalmente, strategy funcionando, falta testar o observer
-		 * revisar a classe de estoque que não está salvando
-		 * terminar de fazer a view, falta implementar a consulta
-		 * remoção e adição estão parcialmente implementadas precisando só rever os métodos da classe Estoque
+		 * 
+		 * revisar a classe de estoque que está salvando de maneira errada
 		 * 
 		 * */
 		
@@ -46,9 +50,9 @@ public class MainView {
 				System.out.println("Digite a quantidade de produtos que irá ser comprado");
 				int qtd = scn.nextInt();
 				
-				 
+				Produto produto = estoque.getEstoque().get(temp);
 				
-				compra.setPrecoTotal(produto.get(temp).getPreco_unitario() * qtd);
+				compra.setPrecoTotal(produto.getPreco_unitario() * qtd);
 				System.out.println("Insira o valor que será pago");
 				double valor = scn.nextDouble();
 				System.out.println("1 para Dinheiro || 2 para Débito || 3 para Crédito");
@@ -56,11 +60,12 @@ public class MainView {
 				compra.setPagamento(tipoPagamento);
 				
 				compra.pagar(valor, compra);
+				
+				produto.setQuantidade(produto.getQuantidade() - qtd);
+				compra.atualizar(estoque);
 				break;
 				
 			case 2:
-				System.out.println("Digite o codigo de barras");
-				int codBarras = scn.nextInt();
 				System.out.println("Digite o nome do produto");
 				String nome = scn.next();
 				System.out.println("Digite a descrição do produto");
@@ -69,25 +74,25 @@ public class MainView {
 				float prec = scn.nextFloat();
 				System.out.println("Digite a quantidade em estoque");
 				int qtdEstq = scn.nextInt();
-				//possível problema na classe Estoque, talvez o add e o remove precisem ser implementados de forma diferente?
-				estoque.addDoEstoque(new Produto(codBarras,nome,desc,prec,qtdEstq));
+				//possível a partir do terceiro produto adicionado o estoque adiciona 2 produtos de uma vez, além da quantidade estar sendo maior que a colocada
+				estoque.addDoEstoque(new Produto(estoque.getEstoque().size(),nome,desc,prec,qtdEstq));
 				System.out.println("Produto adicionado com sucesso");
 				break;
 			
 			case 3:
 				System.out.println("Digite o codigo de barras do produto que deseja retirar do estoque");
-				codBarras = scn.nextInt();
-				ArrayList<Produto> pr = estoque.getEstoque();
-				pr.remove(codBarras);
+				int codBarras = scn.nextInt();
+				estoque.removeDoEstoque(estoque.getEstoque().get(codBarras));
 				break;
 			
 			case 4:
 				int c =0;
-				pr = estoque.getEstoque();
+				 
 				System.out.println("cod_barras || nome || desc || preco_unit || estoque");
-				//Fazer uma forma de printar todos os produtos do estoque
-				while(pr.size() > c) {
-					System.out.println(pr.get(c).toString());
+				 
+				while(estoque.getEstoque().size() > c) {
+					System.out.println( estoque.getEstoque().get(c).getCod_barras() + " || " +estoque.getEstoque().get(c).getNome() + " || " + estoque.getEstoque().get(c).getDescricao() + " || " + estoque.getEstoque().get(c).getPreco_unitario() + " || " + estoque.getEstoque().get(c).getQuantidade());
+					c++;
 				}
 				break;
 			

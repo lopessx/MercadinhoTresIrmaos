@@ -12,7 +12,7 @@ import interfaces.Subject;
 public class Estoque implements Subject   {
 	
 	private static Estoque instancia = new Estoque();
-	private ArrayList<Produto> estoque = null;
+	private ArrayList<Produto> estoque = new ArrayList<Produto>();
 	private List<Observer> observers = new ArrayList<>();
 			
 	private Estoque() {
@@ -33,16 +33,25 @@ public class Estoque implements Subject   {
 		Produto aux = null;
 		
 		Iterator<Produto> iterator = new ArrayListInterator<Produto>(estoque);
-		
+		//Precisei colocar esse verificador se não ele não adiciona o primeiro produto
+		if(iterator.hasNext() == false) {
+			estoque.add(object);
+		}else {
 		while (iterator.hasNext()) {
 			aux = iterator.next();
 			
 			if (aux.equals(object)) {
-				aux.setQuantidade(aux.getQuantidade() + object.getQuantidade());
+			
+					aux.setQuantidade(aux.getQuantidade() + object.getQuantidade());
+				
+				
 			} else {
 				estoque.add(object);
 			}
 		}
+		
+		}
+
 	}
 	
 	
@@ -65,9 +74,9 @@ public class Estoque implements Subject   {
 				throw new NoSuchElementException("Não há esse Produto no Estoque");
 			}
 		}
-		
-		
+
 	}
+
 
 	@Override
 	public void registrarObserver(Observer observer) {
